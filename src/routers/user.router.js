@@ -66,7 +66,7 @@ router.post('/login', disableWithToken, requiredFields('email', 'password'), (re
             const token = jwt.sign(tokenPayload, config.SECRET, {
                 expiresIn: config.EXPIRATION,
             });
-            return res.json({ token: `Bearer ${token}` });
+            return res.json({ token: token });
         });
     })
     .catch(report => res.status(400).json(errorsParser.generateErrorResponse(report)));
